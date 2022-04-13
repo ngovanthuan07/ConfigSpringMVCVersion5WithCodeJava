@@ -155,6 +155,18 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+create table `manufacturer` (
+	`id` int (11) auto_increment primary key,
+    `name` nvarchar(100) not null,
+    `country` nvarchar(100) null
+);
+create table `pro_man` (
+	`product_id` int (11),
+    `manufacturer_id` int (11),
+    FOREIGN KEY (`product_id`) REFERENCES product(`id`),
+    FOREIGN KEY ( `manufacturer_id`) REFERENCES manufacturer(`id`),
+    CONSTRAINT `pk_pro_man` PRIMARY KEY (`product_id`,`manufacturer_id`)
+);
 --
 -- Dumping data for table `user`
 --
